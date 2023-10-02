@@ -196,7 +196,7 @@ public class frmBuscar_DetalleVenta extends javax.swing.JDialog {
         String condicion="";
         try{
             if(!txtIdFactura.getText().equals("")){
-                condicion = "ID_FACTURA_VENTA '%" + txtIdFactura.getText() + "%'";
+                condicion = "ID_DETALLE_FACTURA '%" + txtIdFactura.getText() + "%'";
             }
             CargarDatos(condicion);
         }catch(Exception e){

@@ -112,6 +112,11 @@ public class frmMenu extends javax.swing.JFrame {
 
         mnuDetalleCompra.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnuDetalleCompra.setText("Detalle Compra");
+        mnuDetalleCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuDetalleCompraActionPerformed(evt);
+            }
+        });
         jMenu1.add(mnuDetalleCompra);
 
         jMenuItem1.setText("Salir");
@@ -246,6 +251,23 @@ public class frmMenu extends javax.swing.JFrame {
         frm.toFront();
         frm.setVisible(true);
     }//GEN-LAST:event_mnuDetalleVentasActionPerformed
+
+    private void mnuDetalleCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuDetalleCompraActionPerformed
+        frmDetalle_Compras frm = new frmDetalle_Compras();
+        escritorio.add(frm);
+        // CERRAR EL FORMUKARIO INTERNO
+        
+        //Tamaño de la ventana contenedor
+        Dimension sizeContenedor = escritorio.getSize();
+        //tamaño de la ventana clientes
+        Dimension sizefrmDetalle_Compras = frm.getSize();
+        
+        frm.setLocation(((int)sizeContenedor.getWidth()- (int)sizefrmDetalle_Compras.getWidth())/2,
+                ((int)sizeContenedor.getHeight() - (int)sizefrmDetalle_Compras.getHeight())/2);
+        
+        frm.toFront();
+        frm.setVisible(true);
+    }//GEN-LAST:event_mnuDetalleCompraActionPerformed
 
     /**
      * @param args the command line arguments

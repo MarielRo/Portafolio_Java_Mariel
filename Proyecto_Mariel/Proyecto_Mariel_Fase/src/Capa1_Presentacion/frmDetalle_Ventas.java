@@ -19,12 +19,19 @@ import javax.swing.table.DefaultTableModel;
  * @author marie
  */
 public class frmDetalle_Ventas extends javax.swing.JInternalFrame {
-//Variable global
+    //Variable global
     DefaultTableModel modelo;
     
     /** Creates new form frmDetalle_Ventas */
     public frmDetalle_Ventas() {
         initComponents();
+        
+        try {
+            CargarDatos("");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,"Error:" + e.getMessage());
+        } 
+        
     }
     private Detalle_Venta GenerarEntidad() throws ParseException {
         Detalle_Venta detalle_venta = new Detalle_Venta();
@@ -261,63 +268,10 @@ public class frmDetalle_Ventas extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        LNDetalle_Ventas logica = new LNDetalle_Ventas();
-        Detalle_Venta detalle_venta = null;
-        try {
-           detalle_venta = GenerarEntidad();
-        } catch (ParseException ex) {
-            Logger.getLogger(Detalle_Venta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            if(detalle_venta.isExiste()){
-                logica.Modificar(detalle_venta);
-            }
-            else{
-                logica.Insertar(detalle_venta);
-            }
-            JOptionPane.showMessageDialog(this,logica.getMensaje());
-            Limpiar();
-            CargarDatos("");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,e.getMessage());
-        }
-    }//GEN-LAST:event_btnGuardarActionPerformed
-
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        dispose();
-    }//GEN-LAST:event_btnSalirActionPerformed
-
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         frmBuscar_DetalleVenta frmBuscar = new frmBuscar_DetalleVenta(null, true);
         frmBuscar.setVisible(true);
     }//GEN-LAST:event_btnBuscarActionPerformed
-
-    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        Limpiar();
-    }//GEN-LAST:event_btnLimpiarActionPerformed
-
-    private void tblDetalle_VentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDetalle_VentaMouseClicked
-        try
-        {
-            LNDetalle_Ventas logica = new LNDetalle_Ventas();
-            Detalle_Venta detalle_venta;
-            String condicion;
-            if (evt.getClickCount() == 2) {
-                int fila = tblDetalle_Venta.rowAtPoint(evt.getPoint());
-                txtId.setText(tblDetalle_Venta.getValueAt(fila, 0).toString());
-                condicion = String.format("id_factura_venta=%s", txtId.getText());
-                detalle_venta = logica.ObtenerRegistro(condicion);
-
-                txtId.setText(String.valueOf(detalle_venta.getId_detalle_venta()));
-                txtIdFactura_venta.setText(String.valueOf(detalle_venta.getFactura_venta()));
-                txtIdProducto.setText(String.valueOf(detalle_venta.getId_producto()));
-                txtCantidad.setText(String.valueOf(detalle_venta.getCantidad()));
-                txtPrecio.setText(String.valueOf(detalle_venta.getPrecio()));
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());}
-    }//GEN-LAST:event_tblDetalle_VentaMouseClicked
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         LNDetalle_Ventas logica = new LNDetalle_Ventas();
@@ -339,6 +293,59 @@ public class frmDetalle_Ventas extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this,e.getMessage());
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void tblDetalle_VentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDetalle_VentaMouseClicked
+        try
+        {
+            LNDetalle_Ventas logica = new LNDetalle_Ventas();
+            Detalle_Venta detalle_venta;
+            String condicion;
+            if (evt.getClickCount() == 2) {
+                int fila = tblDetalle_Venta.rowAtPoint(evt.getPoint());
+                txtId.setText(tblDetalle_Venta.getValueAt(fila, 0).toString());
+                condicion = String.format("id_detalle_venta=%s", txtId.getText());
+                detalle_venta = logica.ObtenerRegistro(condicion);
+
+                txtId.setText(String.valueOf(detalle_venta.getId_detalle_venta()));
+                txtIdFactura_venta.setText(String.valueOf(detalle_venta.getFactura_venta()));
+                txtIdProducto.setText(String.valueOf(detalle_venta.getId_producto()));
+                txtCantidad.setText(String.valueOf(detalle_venta.getCantidad()));
+                txtPrecio.setText(String.valueOf(detalle_venta.getPrecio()));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());}
+    }//GEN-LAST:event_tblDetalle_VentaMouseClicked
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        Limpiar();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        LNDetalle_Ventas logica = new LNDetalle_Ventas();
+        Detalle_Venta detalle_venta = null;
+        try {
+            detalle_venta = GenerarEntidad();
+        } catch (ParseException ex) {
+            Logger.getLogger(Detalle_Venta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            if(detalle_venta.isExiste()){
+                logica.Modificar(detalle_venta);
+            }
+            else{
+                logica.Insertar(detalle_venta);
+            }
+            JOptionPane.showMessageDialog(this,logica.getMensaje());
+            Limpiar();
+            CargarDatos("");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,e.getMessage());
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

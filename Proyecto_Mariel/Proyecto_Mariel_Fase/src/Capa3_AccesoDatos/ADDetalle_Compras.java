@@ -40,14 +40,13 @@ public class ADDetalle_Compras {
     
     public int Insertar(Detalle_Compra detalle_compra) throws Exception {
         int id = -1;
-        String sentencia = "insert into detalle_factura_compra(id_detalle_compra,id_factura_compra,id_producto,cantidad,precio_compra) VALUES (?,?,?,?,?)";
+        String sentencia = "insert into detalle_factura_compra(id_factura_compra,id_producto,cantidad,precio_compra) VALUES (?,?,?,?)";
         try {
             PreparedStatement ps = _cnn.prepareStatement(sentencia, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, detalle_compra.getId_detalle_compra());
-            ps.setInt(2, detalle_compra.getFactura_compra());
-             ps.setInt(3, detalle_compra.getId_producto());
-            ps.setInt(4, detalle_compra.getCantidad());            
-            ps.setDouble(5, detalle_compra.getPrecio());
+            ps.setInt(1, detalle_compra.getFactura_compra());
+             ps.setInt(2, detalle_compra.getId_producto());
+            ps.setInt(3, detalle_compra.getCantidad());            
+            ps.setDouble(4, detalle_compra.getPrecio());
             ps.execute();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs != null && rs.next()) {
@@ -145,7 +144,7 @@ public class ADDetalle_Compras {
             ps.setInt(1, detalle_compra.getFactura_compra());
             ps.setInt(2, detalle_compra.getId_producto());
             ps.setInt(3,detalle_compra.getCantidad());
-            ps.setDouble(3,detalle_compra.getPrecio());
+            ps.setDouble(4,detalle_compra.getPrecio());
             ps.setInt(5,detalle_compra.getId_detalle_compra());
             resultado = ps.executeUpdate();
             if(resultado > 0){

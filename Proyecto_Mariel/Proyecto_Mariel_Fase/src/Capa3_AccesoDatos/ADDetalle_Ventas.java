@@ -40,19 +40,18 @@ public class ADDetalle_Ventas {
     
     public int Insertar(Detalle_Venta detalle_Venta) throws Exception {
         int id = -1;
-        String sentencia = "insert into detalle_factura_Venta(id_detalle_venta,id_factura_venta,id_producto,cantidad,precio_venta) VALUES (?,?,?,?,?)";
+        String sentencia = "insert into detalle_factura_Venta(id_factura_venta,id_producto,cantidad,precio_venta) VALUES (?,?,?,?)";
         try {
             PreparedStatement ps = _cnn.prepareStatement(sentencia, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, detalle_Venta.getId_detalle_venta());
-            ps.setInt(2, detalle_Venta.getFactura_venta());
-             ps.setInt(3, detalle_Venta.getId_producto());
-            ps.setInt(4, detalle_Venta.getCantidad());            
-            ps.setDouble(5, detalle_Venta.getPrecio());
+            ps.setInt(1, detalle_Venta.getFactura_venta());
+            ps.setInt(2, detalle_Venta.getId_producto());
+            ps.setInt(3, detalle_Venta.getCantidad());            
+            ps.setDouble(4, detalle_Venta.getPrecio());
             ps.execute();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs != null && rs.next()) {
                 id = rs.getInt(1);
-                _mensaje = "Ingresado satisfactoriamente";
+                _mensaje = " detalle factura Ingresada satisfactoriamente";
             }
         } catch (SQLException e) {
             throw e;
@@ -145,7 +144,7 @@ public class ADDetalle_Ventas {
             ps.setInt(1, detalle_venta.getFactura_venta());
             ps.setInt(2, detalle_venta.getId_producto());
             ps.setInt(3,detalle_venta.getCantidad());
-            ps.setDouble(3,detalle_venta.getPrecio());
+            ps.setDouble(4,detalle_venta.getPrecio());
             ps.setInt(5,detalle_venta.getId_detalle_venta());
             resultado = ps.executeUpdate();
             if(resultado > 0){

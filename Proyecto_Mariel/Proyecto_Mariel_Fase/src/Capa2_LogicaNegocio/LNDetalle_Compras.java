@@ -1,8 +1,8 @@
 //Mariel Rojas
 package Capa2_LogicaNegocio;
 
-import Capa3_AccesoDatos.ADDetalle_Ventas;
-import Capa_Entidades.Detalle_Venta;
+import Capa3_AccesoDatos.ADDetalle_Compras;
+import Capa_Entidades.Detalle_Compra;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,41 +20,41 @@ public class LNDetalle_Compras {
     }
 
     // llamar al método de insertar cliente de la capa de acceso de datos
-    public int Insertar(Detalle_Venta detalle_Venta) throws Exception {
+    public int Insertar(Detalle_Compra detalle_compra) throws Exception {
         int id = -1;
-        ADDetalle_Ventas addetalle_Ventas;
+        ADDetalle_Compras addetalle_compra;
         try {
-            addetalle_Ventas = new ADDetalle_Ventas();
-            id = addetalle_Ventas.Insertar(detalle_Venta);
-            _mensaje = addetalle_Ventas.getMensaje();
+            addetalle_compra = new ADDetalle_Compras();
+            id = addetalle_compra.Insertar(detalle_compra);
+            _mensaje = addetalle_compra.getMensaje();
         } catch (Exception e) {
             throw e;
         }
         return id;
     }
     
-    public List<Detalle_Venta> ListarRegistros(String condicion) throws Exception {
-        List<Detalle_Venta> resultado = new ArrayList();
-        ADDetalle_Ventas addetalle_Ventas;
+    public List<Detalle_Compra> ListarRegistros(String condicion) throws Exception {
+        List<Detalle_Compra> resultado = new ArrayList();
+        ADDetalle_Compras addetalle_compra;
         try {
-            addetalle_Ventas = new ADDetalle_Ventas();
-            resultado = addetalle_Ventas.ListarRegistros(condicion);
+            addetalle_compra = new ADDetalle_Compras();
+            resultado = addetalle_compra.ListarRegistros(condicion);
         } catch (Exception e) {
             throw e;
         }
         return resultado;
     }
 
-    public Detalle_Venta ObtenerRegistro(String condicion) throws Exception {
-        Detalle_Venta resultado;
-        ADDetalle_Ventas addetalle_Ventas;
+    public Detalle_Compra ObtenerRegistro(String condicion) throws Exception {
+        Detalle_Compra resultado;
+        ADDetalle_Compras addetalle_compra;
         try {
-            addetalle_Ventas = new ADDetalle_Ventas();
-            resultado = addetalle_Ventas.ObtenerRegisto(condicion);
+            addetalle_compra = new ADDetalle_Compras();
+            resultado = addetalle_compra.ObtenerRegisto(condicion);
             if(resultado.isExiste()){
-                _mensaje= "Detalle venta Recuperado exitosamente";
+                _mensaje= "Detalle compra Recuperado exitosamente";
             }else{
-                _mensaje = "Detalle venta no existe";
+                _mensaje = "Detalle compra no existe";
             }
         } catch (Exception e) {
             throw e;
@@ -62,31 +62,30 @@ public class LNDetalle_Compras {
         return resultado;
     }
 
-    public int Modificar(Detalle_Venta detalle_Ventas) throws Exception {
+    public int Modificar(Detalle_Compra detalle_compra) throws Exception {
         int resultado = -1;
-        ADDetalle_Ventas addetalle_Ventas;
+        ADDetalle_Compras addetalle_compra;
         try {
-            addetalle_Ventas = new ADDetalle_Ventas();
-            resultado = addetalle_Ventas.Modificar(detalle_Ventas);
-            _mensaje = addetalle_Ventas.getMensaje();
+            addetalle_compra = new ADDetalle_Compras();
+            resultado = addetalle_compra.Modificar(detalle_compra);
+            _mensaje = addetalle_compra.getMensaje();
         } catch (Exception e) {
             throw e;
         }
         return resultado;
     }
 
-    public int Eliminar(Detalle_Venta detalle_Venta) throws Exception {
+    public int Eliminar(Detalle_Compra detalle_compra) throws Exception {
         int resultado = -1;
-        ADDetalle_Ventas addetalle_Ventas;
+        ADDetalle_Compras addetalle_compra;
         try {
-            addetalle_Ventas = new ADDetalle_Ventas();
-            resultado = addetalle_Ventas.Eliminar(detalle_Venta);
-            _mensaje = addetalle_Ventas.getMensaje();
+            addetalle_compra = new ADDetalle_Compras();
+            resultado = addetalle_compra.Eliminar(detalle_compra);
+            _mensaje = addetalle_compra.getMensaje();
         } catch (Exception e) {
             throw e;
         }
         return resultado;
     }
 }
- 
-}
+
