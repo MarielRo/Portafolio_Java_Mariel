@@ -24,7 +24,7 @@ public class Portafolio03_Mariel {
         
         
   
-        while (opcion != 8) { // mientras no se digite e 7 sigue recorriendo
+        while (opcion != 7) { // mientras no se digite e 7 sigue recorriendo
            
             opcion = mostrarMenu();
 
@@ -112,7 +112,6 @@ public class Portafolio03_Mariel {
     
     public static void ordenarNombreBurbuja(String[] nombres, int[] edades, double[] salarios)
     {
-        
         for (int i = 0; i < nombres.length - 1; i++) {
             for (int j = i + 1; j < nombres.length; j++) {
                 if (nombres[i].compareTo(nombres[j]) > 0) {
@@ -125,8 +124,6 @@ public class Portafolio03_Mariel {
                     int tempEdad = edades[i];
                     edades[i] = edades[j];
                     edades[j] = tempEdad;
-
-                    // Intercambiar salarios para que coincida con los nombres
                     double tempSalario = salarios[i];
                     salarios[i] = salarios[j];
                     salarios[j] = tempSalario;
@@ -163,11 +160,10 @@ public class Portafolio03_Mariel {
             edades[i] = edades[menor];
             edades[menor] = edadMenor;
 
-            // se intercambia nombres y salarios para que coincidan con las edades ordenadas
+            // se intercambia nombres y salarios para que coincidan c
             String nombreMenor = nombres[i];
             nombres[i] = nombres[menor];
             nombres[menor] = nombreMenor;
-
             double salarioMenor = salarios[i];
             salarios[i] = salarios[menor];
             salarios[menor] = salarioMenor;

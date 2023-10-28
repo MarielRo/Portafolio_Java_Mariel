@@ -16,14 +16,14 @@ public class Portafolio02_Mariel {
                 case 1:
                     //  número factorial
                    System.out.println("Calculando el número factorial.");
-                    calcularFactorial();
+                   calcularFactorial();
                    System.out.println();
                     break;
                 case 2:
                     // L primeros 10 números primos
                     System.out.println("Mostrando los primeros 10 números primo.");
-                    mostrarPrimos(10);
-                     System.out.println();
+                    mostrarPrimos(15);
+                    System.out.println();
                     break;
                 case 3:
                     //  matriz de números al azar
@@ -39,13 +39,15 @@ public class Portafolio02_Mariel {
                     System.out.println();
                     break;
                 case 5:
-                    System.out.println("Saliendo del programa.");
+                    System.out.println("Saliendo.");
                     break;
                 default:
                     System.out.println("Opción no válida. Por favor, digite una opción válida.");
+                    break;
             }
         } while (opcion != 5);
     }
+    
     
     public static int mostrarMenu() {
         Scanner scanner = new Scanner(System.in);
@@ -70,7 +72,7 @@ public class Portafolio02_Mariel {
             System.out.println("No se puede calcular el factorial de un número negativo.");
         } else {
             for (int i = 1; i <= numero; i++) {
-                factorial *= i;
+                factorial *= i; //acuula
             }
             System.out.println("El factorial de " + numero + " es " + factorial);
         }
@@ -81,7 +83,7 @@ public class Portafolio02_Mariel {
         if (numero <= 1 || numero == 4 ) {
             return false;
         }
-        for (int i = 2; i * i <= numero; i++) {
+        for (int i = 2; i * i <= numero; i++) { //usar el sqr
             if (numero % i == 0) {
                 return false;
             }
@@ -95,8 +97,6 @@ public class Portafolio02_Mariel {
         int contador = 0;
 
         while (contador < n) {
-            
-            
             if (esPrimo(numero)) {
                 numerosPrimos[contador] = numero;
                 contador++;
@@ -129,7 +129,7 @@ public class Portafolio02_Mariel {
         System.out.println("Matriz:");
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
-                System.out.printf("%-4d", matriz[i][j]); // -4en el formato indica alineación a la izquierda y un ancho de campo                    de 4 caracteres.
+                System.out.printf("%-4d", matriz[i][j]); // -4en el formato indica alineación a la izquierda y un ancho de campo                      de 4 caracteres.
             }
             System.out.println(); // Cambio de línea después de cada fila
         }
