@@ -150,7 +150,7 @@
                     %>
                     <tr>
                         <%
-                            int numfactura = registroDetalle.getFactura_venta();
+                            int factura = registroDetalle.getFactura_venta();
                             int codigop = registroDetalle.getId_producto();
 
                             //String descripcion = registroDetalle.getNombreProducto(); 
@@ -166,11 +166,8 @@
                         <td><%= cantidad%></td>
                         <td><%= precio_venta%></td>
                         <td><%= cantidad * precio_venta%></td>
-
-
-
                         <td>
-                            <a href="EliminarDetalle?idproducto=<%=codigop%>&idfactura=<%=numfactura%>">
+                            <a href="EliminarDetalle?id_producto=<%=codigop%>&id_factura=<%=factura%>">
                                 <i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>

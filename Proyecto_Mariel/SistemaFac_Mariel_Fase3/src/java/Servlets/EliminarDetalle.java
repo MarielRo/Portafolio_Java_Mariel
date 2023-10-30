@@ -37,7 +37,7 @@ public class EliminarDetalle extends HttpServlet {
             int factura = Integer.parseInt(request.getParameter("id_factura"));
             Detalle_Venta Entidad = new Detalle_Venta();
             Entidad.setId_producto(codigo);
-            Entidad.setId_producto(codigo);
+            Entidad.setFactura_venta(factura);
             LogicaDetalle.Eliminar(Entidad);
             if(factura==0){factura=-1;}
             response.sendRedirect("Frm_Facturar.jsp?txtnumFactura="+factura);

@@ -27,7 +27,7 @@ public class DA_Detalle {
         Connection _Conexion = null;
         try{
             _Conexion = ClaseConexion.getConnection();
-            CS = _Conexion.prepareCall("{call Eliminar_Detalle(?,?,?)}");
+            CS = _Conexion.prepareCall("{call ELIMINAR_DETALLE(?,?,?)}");
             
             CS.setInt(1, Entidad.getFactura_venta());
             CS.setInt(2, Entidad.getId_producto());
